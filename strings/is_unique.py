@@ -6,6 +6,7 @@ Additionally, what if you cannot use additional data structures?
 
 from function_timer import function_timer
 
+
 @function_timer
 def is_unique_no_ds(string: str):
     """
@@ -20,10 +21,11 @@ def is_unique_no_ds(string: str):
         return False
 
     for i in range(len(string)):
-        for j in range(i+1, len(string)):
+        for j in range(i + 1, len(string)):
             if string[i] == string[j]:
                 return False
     return True
+
 
 @function_timer
 def is_unique_no_ds_sorted(string: str):
@@ -39,10 +41,11 @@ def is_unique_no_ds_sorted(string: str):
         return False
 
     string = sorted(string)
-    for i in range(len(string)-1):
-        if string[i] == string[i+1]:
+    for i in range(len(string) - 1):
+        if string[i] == string[i + 1]:
             return False
     return True
+
 
 @function_timer
 def is_unique_set(string: str):
@@ -62,6 +65,7 @@ def is_unique_set(string: str):
         char_set.add(char)
     return True
 
+
 @function_timer
 def is_unique_bool(string: str):
     """
@@ -79,6 +83,7 @@ def is_unique_bool(string: str):
             return False
         char_set[ord(char)] = True
     return True
+
 
 def is_ascii(string: str):
     """
