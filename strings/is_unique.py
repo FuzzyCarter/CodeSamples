@@ -2,6 +2,8 @@
 Is Unique String: Implement an algorithm to determine if a string has all unique characters.
 
 Additionally, what if you cannot use additional data structures?
+
+Author: Fuzzy Carter
 """
 
 from function_timer import function_timer
