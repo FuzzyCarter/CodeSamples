@@ -1,22 +1,23 @@
 """
 A simple function timer decorator.
+
+Author: Fuzzy Carter
 """
 
 import time
-from functools import wraps
 
 def function_timer(func):
     """
     A decorator that times a function.
     """
-    # @wraps(func)
+
     def wrapper(*args, **kwargs):
         """
         A wrapper that times a function.
         """
-        start = time.time()
+        start = time.perf_counter()
         output = func(*args, **kwargs)
-        end = time.time()
+        end = time.perf_counter()
 
         print(f"Function {func.__name__} took {end - start:.10f} seconds to complete.")
 
