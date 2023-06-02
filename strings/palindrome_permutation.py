@@ -23,7 +23,7 @@ from function_timer import function_timer
 
 
 @function_timer
-def is_palindrome_permutation_hash_table(palindrome_permutation: str) -> bool:
+def is_palindrome_permutation_hash_table(phrase: str) -> bool:
     """
     Check if is palindrome permutation by using a hash table to count the number of times each character appears in the
     string. Then, iterate through the hash table and count the number of characters that appear an odd number of times.
@@ -32,16 +32,16 @@ def is_palindrome_permutation_hash_table(palindrome_permutation: str) -> bool:
     Time Complexity: O(n)
     Space Complexity: O(n)
     
-    :param palindrome_permutation: The potential palindrome permutation.
+    :param phrase: The potential palindrome permutation.
     :return: True if the string is a palindrome permutation.
     """
 
-    character_count = get_char_frequency(palindrome_permutation)
+    character_count = get_char_frequency(phrase)
     return check_max_one_odd_character(character_count)
 
 
 @function_timer
-def is_palindrome_permutation_odd_count(palindrome_permutation: str) -> bool:
+def is_palindrome_permutation_odd_count(phrase: str) -> bool:
     """
     Check if is palindrome permutation by keeping track of the number of characters that appear an odd number of times.
 
@@ -53,14 +53,14 @@ def is_palindrome_permutation_odd_count(palindrome_permutation: str) -> bool:
     Time Complexity: O(n)
     Space Complexity: O(n)
 
-    :param palindrome_permutation: The potential palindrome permutation.
+    :param phrase: The potential palindrome permutation.
     :return: True if only one character appears an odd number of times
     """
 
     odd_count = 0
     character_count = {}
 
-    for char in palindrome_permutation:
+    for char in phrase:
         char = char.lower()
 
         if char in ascii_lowercase:
@@ -74,20 +74,46 @@ def is_palindrome_permutation_odd_count(palindrome_permutation: str) -> bool:
     return odd_count <= 1
 
 
+@function_timer
+def is_palindrome_permutation_bit_vector(phrase: str) -> bool:
+    """
+    Check if is palindrome permutation by using a bit vector to keep track if the character count is odd or even.
+
+    This solution has a better space complexity than other solutions but is less readable and uses more complex bit
+    logic for those gains. This solution should only be used where space is a premium.
+
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+
+    :param phrase:
+    :return:
+    """
+
+    bit_vector = 0
+
+    for char in phrase:
+        char = char.lower()
+
+        if char in ascii_lowercase:
+            char_ordinal = ord(char)
+            bit_vector = toggle_bit(bit_vector, char_ordinal)
+
+    return check_max_one_bit_set(bit_vector)
+
 # -- Helper Functions ---------------------------------------------------------
 
-def get_char_frequency(palindrome_permutation: str) -> dict:
+def get_char_frequency(phrase: str) -> dict:
     """
     Get the frequency of each character in the string.
 
     This function will not count non-letter characters and treat upper and lower case characters as the same.
 
-    :param palindrome_permutation:
+    :param phrase:
     :return: A dictionary containing the frequency of each character in the string.
     """
     character_count = {}
 
-    for char in palindrome_permutation:
+    for char in phrase:
         char = char.lower()
 
         if char in ascii_lowercase:  # Ignore non-letter characters.
@@ -104,22 +130,55 @@ def check_max_one_odd_character(character_count: Dict[str, int]) -> bool:
     :return: True if there is at most one character that appears an odd number of times.
     """
     odd_count = 0
+
     for char in character_count:
         if character_count[char] % 2 != 0:
             odd_count += 1
+
     return odd_count <= 1
 
 
+def toggle_bit(bit_vector: int, index: int) -> int:
+    """
+    Toggle the bit at the given index in the bit vector.
+
+    :param bit_vector: The bit vector to toggle the bit in.
+    :param index: The index of the bit to toggle.
+    :return: The bit vector with the bit at the given index toggled.
+    """
+    if index < 0:
+        return bit_vector
+
+    mask = 1 << index  # Create a mask with a 1 at the given index and 0s everywhere else.
+    bit_vector ^= mask  # XOR the bit vector with the mask to toggle the bit at the given index.
+
+    return bit_vector
+
+
+def check_max_one_bit_set(bit_vector: int) -> bool:
+    """
+    Check if there is at most one bit set in the bit vector.
+
+    Subtracting 1 from a number with only one bit set will result in a number with all bits to the right of the set
+    bit set and all bits to the left of the set bit unset. ANDing the original number with the result of
+    subtracting 1 from the original number will result in 0 if there is only one bit set in the original number.
+
+    :param bit_vector: The bit vector to check.
+    :return: True if there is at most one bit set in the bit vector.
+    """
+    return (bit_vector & (bit_vector - 1)) == 0
+
+
 if __name__ == "__main__":
-    palindrome_permutation_even_true = "k a aky"
+    phrase_even_true = "k a aky"
     palindrome_permutation_odd_true = "Tact Coa"
     palindrome_permutation_non_letter_odd_true = "$%^&*()_++Tact Coa!##  .,<>/?~`][}{]"
 
     palindrome_permutation_odd_false = "Tact Coaa"
-    palindrome_permutation_non_letter_odd_false = "$%^&*()_++car!RaCee##  .,<>/?~`][}{]"
+    palindrome_permutation_non_letter_odd_false = "$%^&*()_++car!RaCec##  .,<>/?~`][}{]"
 
     print(f"The following strings test is_palindrome_permutation_hash_table.")
-    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_hash_table(palindrome_permutation_even_true)}")
+    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_hash_table(phrase_even_true)}")
     print(f"Palindrome Permutation Odd True: {is_palindrome_permutation_hash_table(palindrome_permutation_odd_true)}")
     print(f"Palindrome Permutation Non-Letter Odd True: "
           f"{is_palindrome_permutation_hash_table(palindrome_permutation_non_letter_odd_true)}")
@@ -128,10 +187,19 @@ if __name__ == "__main__":
           f"{is_palindrome_permutation_hash_table(palindrome_permutation_non_letter_odd_false)}")
 
     print(f"\nThe following strings test is_palindrome_permutation_odd_count.")
-    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_odd_count(palindrome_permutation_even_true)}")
+    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_odd_count(phrase_even_true)}")
     print(f"Palindrome Permutation Odd True: {is_palindrome_permutation_odd_count(palindrome_permutation_odd_true)}")
     print(f"Palindrome Permutation Non-Letter Odd True: "
           f"{is_palindrome_permutation_odd_count(palindrome_permutation_non_letter_odd_true)}")
     print(f"Palindrome Permutation Odd False: {is_palindrome_permutation_odd_count(palindrome_permutation_odd_false)}")
     print(f"Palindrome Permutation Non-Letter Odd False: "
           f"{is_palindrome_permutation_odd_count(palindrome_permutation_non_letter_odd_false)}")
+
+    print(f"\nThe following strings test is_palindrome_permutation_bit_vector.")
+    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_bit_vector(phrase_even_true)}")
+    print(f"Palindrome Permutation Odd True: {is_palindrome_permutation_bit_vector(palindrome_permutation_odd_true)}")
+    print(f"Palindrome Permutation Non-Letter Odd True: "
+          f"{is_palindrome_permutation_bit_vector(palindrome_permutation_non_letter_odd_true)}")
+    print(f"Palindrome Permutation Odd False: {is_palindrome_permutation_bit_vector(palindrome_permutation_odd_false)}")
+    print(f"Palindrome Permutation Non-Letter Odd False: " 
+          f"{is_palindrome_permutation_bit_vector(palindrome_permutation_non_letter_odd_false)}")
