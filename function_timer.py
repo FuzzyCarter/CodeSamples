@@ -6,7 +6,8 @@ Author: Fuzzy Carter
 
 import time
 
-def function_timer(func):
+
+def function_timer(func) -> callable:
     """
     A decorator that times a function.
     """

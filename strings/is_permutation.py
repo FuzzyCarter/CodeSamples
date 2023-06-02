@@ -8,7 +8,7 @@ from function_timer import function_timer
 
 
 @function_timer
-def is_permutation_oridianl_sum(s1: str, s2: str):
+def is_permutation_ordinal_sum(s1: str, s2: str) -> bool:
     """
     Check if is permutation by comparing the sum of the ordinal values of each character in the string.
 
@@ -34,7 +34,7 @@ def is_permutation_oridianl_sum(s1: str, s2: str):
 
 
 @function_timer
-def is_permutation_string_minus_string(s1: str, s2: str):
+def is_permutation_string_minus_string(s1: str, s2: str) -> bool:
     """
     Check if is permutation by subtracting one string from the other.
 
@@ -55,7 +55,7 @@ def is_permutation_string_minus_string(s1: str, s2: str):
 
 
 @function_timer
-def is_permutation_string_equal_string(s1: str, s2: str):
+def is_permutation_string_equal_string(s1: str, s2: str) -> bool:
     """
     Check if is permutation by comparing the strings.
 
@@ -75,7 +75,7 @@ def is_permutation_string_equal_string(s1: str, s2: str):
 
 
 @function_timer
-def is_permutation_character_count(s1: str, s2: str):
+def is_permutation_character_count(s1: str, s2: str) -> bool:
     """
     Check if is permutation by counting the characters.
 
@@ -109,8 +109,8 @@ if __name__ == "__main__":
     string_permutation_false_1 = "abcdefghi"
     string_permutation_false_2 = "ihgfedcbz"
 
-    print(is_permutation_oridianl_sum(string_permutation_true_1, string_permutation_true_2))
-    print(is_permutation_oridianl_sum(string_permutation_false_1, string_permutation_false_2))
+    print(is_permutation_ordinal_sum(string_permutation_true_1, string_permutation_true_2))
+    print(is_permutation_ordinal_sum(string_permutation_false_1, string_permutation_false_2))
 
     print(is_permutation_string_minus_string(string_permutation_true_1, string_permutation_true_2))
     print(is_permutation_string_minus_string(string_permutation_false_1, string_permutation_false_2))

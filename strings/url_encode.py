@@ -6,8 +6,9 @@ Author: Fuzzy Carter
 
 from function_timer import function_timer
 
+
 @function_timer
-def url_encode(string: str):
+def url_encode(string: str) -> str:
     """
     Encode a string for a URL by iterating through each character in the string and replacing spaces with '%20'. Handles
     leading and trailing spaces by removing them.
@@ -32,7 +33,7 @@ def url_encode(string: str):
 
 
 @function_timer
-def url_encode_pythonic(string: str):
+def url_encode_pythonic(string: str) -> str:
     """
     Encode a string for a URL by using the built-in replace function to replace spaces with '%20'. Handles leading and
     trailing spaces by removing them.

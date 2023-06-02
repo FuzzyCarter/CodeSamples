@@ -10,7 +10,7 @@ from function_timer import function_timer
 
 
 @function_timer
-def is_unique_no_ds(string: str):
+def is_unique_no_ds(string: str) -> bool:
     """
     Using no additional data structures without sorting.
 
@@ -30,7 +30,7 @@ def is_unique_no_ds(string: str):
 
 
 @function_timer
-def is_unique_no_ds_sorted(string: str):
+def is_unique_no_ds_sorted(string: str) -> bool:
     """
     Using no additional data structures but can modify the string.
 
@@ -50,7 +50,7 @@ def is_unique_no_ds_sorted(string: str):
 
 
 @function_timer
-def is_unique_set(string: str):
+def is_unique_set(string: str) -> bool:
     """
     Using a set to keep track of characters seen.
 
@@ -69,7 +69,7 @@ def is_unique_set(string: str):
 
 
 @function_timer
-def is_unique_bool(string: str):
+def is_unique_bool(string: str) -> bool:
     """
     Using a boolean array to keep track of characters seen.
 
@@ -87,7 +87,7 @@ def is_unique_bool(string: str):
     return True
 
 
-def is_ascii(string: str):
+def is_ascii(string: str) -> bool:
     """
     Checks if a string is ASCII.
     """
