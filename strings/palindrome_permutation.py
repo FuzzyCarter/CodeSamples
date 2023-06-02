@@ -9,11 +9,6 @@ You can ignore casing and non-letter characters.
 Example: Tact Coa
 Output: True (permutations: "taco cat", "atco cta", etc.)
 
-HINT: You do not have to-and should not-generate all permutations. This would be very inefficient.
-HINT: What characteristics would a string that is a permutation of a palindrome have?
-HINT: Have you tried a hash table? You should be able to get this down to O(N) time.
-HINT: Can you reduce the space using a bit vector?
-
 Author: Fuzzy Carter
 """
 
