@@ -100,6 +100,7 @@ def is_palindrome_permutation_bit_vector(phrase: str) -> bool:
 
     return check_max_one_bit_set(bit_vector)
 
+
 # -- Helper Functions ---------------------------------------------------------
 
 def get_char_frequency(phrase: str) -> dict:
