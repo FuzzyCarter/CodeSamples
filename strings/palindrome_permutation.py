@@ -40,6 +40,40 @@ def is_palindrome_permutation_hash_table(palindrome_permutation: str) -> bool:
     return check_max_one_odd_character(character_count)
 
 
+@function_timer
+def is_palindrome_permutation_odd_count(palindrome_permutation: str) -> bool:
+    """
+    Check if is palindrome permutation by keeping track of the number of characters that appear an odd number of times.
+
+    This solution has similar time and space complexity to is_palindrome_permutation_hash_table, but could be more
+    efficient because it does not require iterating through the hash table to count the number of characters that appear
+    an odd number of times. However, this solution is less readable and has more operations per character and could wind
+    up being less efficient in some cases.
+
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+
+    :param palindrome_permutation: The potential palindrome permutation.
+    :return: True if only one character appears an odd number of times
+    """
+
+    odd_count = 0
+    character_count = {}
+
+    for char in palindrome_permutation:
+        char = char.lower()
+
+        if char in ascii_lowercase:
+            character_count[char] = character_count.get(char, 0) + 1
+
+            if character_count.get(char) % 2 == 1:
+                odd_count += 1
+            else:
+                odd_count -= 1
+
+    return odd_count <= 1
+
+
 # -- Helper Functions ---------------------------------------------------------
 
 def get_char_frequency(palindrome_permutation: str) -> dict:
@@ -56,7 +90,7 @@ def get_char_frequency(palindrome_permutation: str) -> dict:
     for char in palindrome_permutation:
         char = char.lower()
 
-        if char in ascii_lowercase: # Ignore non-letter characters.
+        if char in ascii_lowercase:  # Ignore non-letter characters.
             character_count[char] = character_count.get(char, 0) + 1
 
     return character_count
@@ -75,6 +109,7 @@ def check_max_one_odd_character(character_count: Dict[str, int]) -> bool:
             odd_count += 1
     return odd_count <= 1
 
+
 if __name__ == "__main__":
     palindrome_permutation_even_true = "k a aky"
     palindrome_permutation_odd_true = "Tact Coa"
@@ -83,6 +118,7 @@ if __name__ == "__main__":
     palindrome_permutation_odd_false = "Tact Coaa"
     palindrome_permutation_non_letter_odd_false = "$%^&*()_++car!RaCee##  .,<>/?~`][}{]"
 
+    print(f"The following strings test is_palindrome_permutation_hash_table.")
     print(f"Palindrome Permutation Even True: {is_palindrome_permutation_hash_table(palindrome_permutation_even_true)}")
     print(f"Palindrome Permutation Odd True: {is_palindrome_permutation_hash_table(palindrome_permutation_odd_true)}")
     print(f"Palindrome Permutation Non-Letter Odd True: "
@@ -90,3 +126,12 @@ if __name__ == "__main__":
     print(f"Palindrome Permutation Odd False: {is_palindrome_permutation_hash_table(palindrome_permutation_odd_false)}")
     print(f"Palindrome Permutation Non-Letter Odd False: "
           f"{is_palindrome_permutation_hash_table(palindrome_permutation_non_letter_odd_false)}")
+
+    print(f"\nThe following strings test is_palindrome_permutation_odd_count.")
+    print(f"Palindrome Permutation Even True: {is_palindrome_permutation_odd_count(palindrome_permutation_even_true)}")
+    print(f"Palindrome Permutation Odd True: {is_palindrome_permutation_odd_count(palindrome_permutation_odd_true)}")
+    print(f"Palindrome Permutation Non-Letter Odd True: "
+          f"{is_palindrome_permutation_odd_count(palindrome_permutation_non_letter_odd_true)}")
+    print(f"Palindrome Permutation Odd False: {is_palindrome_permutation_odd_count(palindrome_permutation_odd_false)}")
+    print(f"Palindrome Permutation Non-Letter Odd False: "
+          f"{is_palindrome_permutation_odd_count(palindrome_permutation_non_letter_odd_false)}")
