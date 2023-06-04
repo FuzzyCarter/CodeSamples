@@ -1,5 +1,5 @@
 """
-Is Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+Is Permutation: Given two strings_n_arrays, write a method to decide if one is a permutation of the other.
 
 Author: Fuzzy Carter
 """
@@ -17,7 +17,7 @@ def is_permutation_ordinal_sum(s1: str, s2: str) -> bool:
 
     :param s1: The first string to compare.
     :param s2: The second string to compare.
-    :return: True if the strings are permutations of each other.
+    :return: True if the strings_n_arrays are permutations of each other.
     """
 
     if len(s1) != len(s2):
@@ -43,7 +43,7 @@ def is_permutation_string_minus_string(s1: str, s2: str) -> bool:
 
     :param s1: The first string to compare.
     :param s2: The second string to compare.
-    :return: True if the strings are permutations of each other.
+    :return: True if the strings_n_arrays are permutations of each other.
     """
 
     if len(s1) != len(s2):
@@ -57,7 +57,7 @@ def is_permutation_string_minus_string(s1: str, s2: str) -> bool:
 @function_timer
 def is_permutation_string_equal_string(s1: str, s2: str) -> bool:
     """
-    Check if is permutation by comparing the strings.
+    Check if is permutation by comparing the strings_n_arrays.
 
     Time Complexity: O(n log(n))
     Space Complexity: O(1)
@@ -65,7 +65,7 @@ def is_permutation_string_equal_string(s1: str, s2: str) -> bool:
     
     :param s1: The first string to compare.
     :param s2: The second string to compare.  
-    :return: True if the strings are permutations of each other.
+    :return: True if the strings_n_arrays are permutations of each other.
     """
 
     if len(s1) != len(s2):
@@ -84,7 +84,7 @@ def is_permutation_character_count(s1: str, s2: str) -> bool:
 
     :param s1: The first string to compare.
     :param s2: The second string to compare.
-    :return: True if the strings are permutations of each other.
+    :return: True if the strings_n_arrays are permutations of each other.
     """
 
     if len(s1) != len(s2):

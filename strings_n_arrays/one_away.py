@@ -1,6 +1,6 @@
 """
-One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or
-replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+One Away: There are three types of edits that can be performed on strings_n_arrays: insert a character, remove a character, or
+replace a character. Given two strings_n_arrays, write a function to check if they are one edit (or zero edits) away.
 
 Example:
 pale, ple -> true
@@ -17,19 +17,19 @@ from function_timer import function_timer
 @function_timer
 def one_away_cleaner(first_string: str, second_string: str) -> bool:
     """
-    Check if is one away by iterating through the strings and comparing the characters. If the characters are different,
-    check if the strings are one insert, one remove, or one replace away from being equal. If the characters are the
-    same, continue iterating through the strings.
+    Check if is one away by iterating through the strings_n_arrays and comparing the characters. If the characters are different,
+    check if the strings_n_arrays are one insert, one remove, or one replace away from being equal. If the characters are the
+    same, continue iterating through the strings_n_arrays.
 
     This solution is cleaner than the one_away_single_loop solution but is less efficient because it performs two
-    different loops through the strings for improved readability.
+    different loops through the strings_n_arrays for improved readability.
 
     Time Complexity: O(n)
     Space Complexity: O(1)
 
     :param first_string: The first string to compare.
     :param second_string: The second string to compare.
-    :return: True if the strings are one edit away from being equal.
+    :return: True if the strings_n_arrays are one edit away from being equal.
     """
 
     if len(first_string) == len(second_string):
@@ -45,18 +45,18 @@ def one_away_cleaner(first_string: str, second_string: str) -> bool:
 @function_timer
 def one_away_single_loop(first_string: str, second_string: str) -> bool:
     """
-    Check if is one insert away by iterating through the strings and comparing the characters and performing the insert,
+    Check if is one insert away by iterating through the strings_n_arrays and comparing the characters and performing the insert,
     remove, or replace check all in the same loop.
 
     This solution is less clean than the one_away_cleaner solution but is more efficient because it performs only one
-    loop through the strings. However, it is less readable than the one_away_cleaner solution.
+    loop through the strings_n_arrays. However, it is less readable than the one_away_cleaner solution.
 
     Time Complexity: O(n)
     Space Complexity: O(1)
 
     :param first_string: The first string to compare.
     :param second_string: The second string to compare.
-    :return: True if the strings are one edit away from being equal.
+    :return: True if the strings_n_arrays are one edit away from being equal.
     """
     if abs(len(first_string) - len(second_string)) > 1:
         return False
@@ -69,7 +69,7 @@ def one_away_single_loop(first_string: str, second_string: str) -> bool:
     index2 = 0
     found_difference = False
 
-    # Iterate through both strings and compare the characters.
+    # Iterate through both strings_n_arrays and compare the characters.
     # If the characters are different, toggle found_difference to true.
     # If the characters are different and found_difference is true, return False.
     while index1 < len(shorter_string) and index2 < len(longer_string):
@@ -93,13 +93,13 @@ def one_away_single_loop(first_string: str, second_string: str) -> bool:
 
 def one_replace_away(first_string: str, second_string: str) -> bool:
     """
-    Check if is one replace away by iterating through the strings and comparing the characters. If the characters are
+    Check if is one replace away by iterating through the strings_n_arrays and comparing the characters. If the characters are
     different, toggle found_differences to true. If the characters are different and found_differences is true, return
     False.
 
     :param first_string: The first string to compare.
     :param second_string: The second string to compare.
-    :return: True if the strings are one replace away from being equal.
+    :return: True if the strings_n_arrays are one replace away from being equal.
     """
     found_difference = False
 
@@ -115,13 +115,13 @@ def one_replace_away(first_string: str, second_string: str) -> bool:
 
 def one_insert_away(first_string: str, second_string: str) -> bool:
     """
-    Check if is one insert away by iterating through the strings and comparing the characters. If the characters are
+    Check if is one insert away by iterating through the strings_n_arrays and comparing the characters. If the characters are
     different and indices are the same, increment one of the indices. If the indices are different, and the characters
     are different, return False.
 
     :param first_string: The first string to compare.
     :param second_string: The second string to compare.
-    :return: True if the strings are one insert away from being equal.
+    :return: True if the strings_n_arrays are one insert away from being equal.
     """
     char_1_index = 0
     char_2_index = 0
