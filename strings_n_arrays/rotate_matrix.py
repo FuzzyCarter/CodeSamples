@@ -32,6 +32,7 @@ Author: Fuzzy Carter
 """
 
 from function_timer import function_timer
+from string_helpers import printable_matrix
 
 @function_timer
 def rotate_matrix_groups_of_four(original_matrix: list[list]) -> list:
@@ -125,18 +126,6 @@ def rotate_matrix_one_cell_at_a_time(original_matrix: list[list]) -> list:
             original_matrix[len(original_matrix) - col - 1][row] = bottom_right
 
     return original_matrix
-
-# -- Helper Functions ---------------------------------------------------------
-
-def printable_matrix(matrix: list[list]) -> str:
-    """
-    Print the matrix in a readable format.
-    """
-    printable_matrix = "\n"
-    for row in matrix:
-        printable_matrix += f"{row}\n"
-
-    return printable_matrix
 
 
 if __name__ == "__main__":
